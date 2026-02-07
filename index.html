@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Rose Day Anjalu! 🌹</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Comic Sans MS', 'Segoe UI', cursive;
+            background: linear-gradient(135deg, #ffd1dc 0%, #ffb3c6 50%, #ff8fab 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+
+        .card-container {
+            max-width: 700px;
+            width: 100%;
+            perspective: 1000px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 30px;
+            padding: 40px;
+            box-shadow: 0 30px 80px rgba(255, 105, 180, 0.4);
+            position: relative;
+            overflow: visible;
+            animation: cardEntrance 1s ease-out;
+            border: 5px solid #ff69b4;
+        }
+
+        @keyframes cardEntrance {
+            from {
+                opacity: 0;
+                transform: translateY(50px) rotateX(20deg);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) rotateX(0);
+            }
+        }
+
+        /* Cute floating stickers */
+        .sticker {
+            position: absolute;
+            font-size: 40px;
+            cursor: pointer;
+            transition: transform 0.3s;
+            z-index: 10;
+        }
+
+        .sticker:hover {
+            transform: scale(1.3) rotate(20deg);
+        }
+
+        .sticker-1 { top: -20px; left: 20px; animation: bounce 2s ease-in-out infinite; }
+        .sticker-2 { top: -15px; right: 30px; animation: bounce 2.5s ease-in-out infinite 0.5s; }
+        .sticker-3 { bottom: -20px; left: 40px; animation: bounce 2.2s ease-in-out infinite 1s; }
+        .sticker-4 { bottom: -15px; right: 20px; animation: bounce 2.8s ease-in-out infinite 1.5s; }
+        .sticker-5 { top: 50%; left: -30px; animation: spin 4s linear infinite; }
+        .sticker-6 { top: 50%; right: -30px; animation: spin 4s linear infinite reverse; }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* Header section */
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .sparkle {
+            display: inline-block;
+            font-size: 30px;
+            animation: sparkle 1.5s ease-in-out infinite;
+        }
+
+        @keyframes sparkle {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.2); }
+        }
+
+        .main-title {
+            font-size: 3em;
+            background: linear-gradient(45deg, #ff1493, #ff69b4, #ffb6c1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin: 20px 0;
+            animation: titleGlow 2s ease-in-out infinite;
+            text-shadow: 2px 2px 4px rgba(255, 105, 180, 0.3);
+        }
+
+        @keyframes titleGlow {
+            0%, 100% { filter: brightness(1); }
+            50% { filter: brightness(1.2); }
+        }
+
+        .name-tag {
+            display: inline-block;
+            background: linear-gradient(135deg, #ff69b4, #ff1493);
+            color: white;
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-size: 2.5em;
+            font-weight: bold;
+            box-shadow: 0 10px 30px rgba(255, 20, 147, 0.4);
+            margin: 20px 0;
+            animation: nameFloat 3s ease-in-out infinite;
+        }
+
+        @keyframes nameFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* Interactive roses */
+        .rose-garden {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+
+        .interactive-rose {
+            font-size: 60px;
+            cursor: pointer;
+            transition: all 0.3s;
+            animation: roseGrow 2s ease-in-out infinite;
+            filter: drop-shadow(0 5px 10px rgba(255, 105, 180, 0.3));
+        }
+
+        .interactive-rose:hover {
+            transform: scale(1.5) rotate(360deg);
+            filter: drop-shadow(0 10px 20px rgba(255, 105, 180, 0.6));
+        }
+
+        .interactive-rose:nth-child(1) { animation-delay: 0s; }
+        .interactive-rose:nth-child(2) { animation-delay: 0.3s; }
+        .interactive-rose:nth-child(3) { animation-delay: 0.6s; }
+        .interactive-rose:nth-child(4) { animation-delay: 0.9s; }
+        .interactive-rose:nth-child(5) { animation-delay: 1.2s; }
+
+        @keyframes roseGrow {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .rose-counter {
+            text-align: center;
+            font-size: 1.5em;
+            color: #ff1493;
+            margin: 20px 0;
+            font-weight: bold;
+        }
+
+        /* Message section */
+        .message-box {
+            background: linear-gradient(135deg, #fff0f5, #ffe4e9);
+            padding: 30px;
+            border-radius: 20px;
+            margin: 30px 0;
+            border: 3px dashed #ff69b4;
+            position: relative;
+        }
+
+        .message-box::before {
+            content: '💌';
+            position: absolute;
+            top: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 50px;
+            animation: swing 2s ease-in-out infinite;
+        }
+
+        @keyframes swing {
+            0%, 100% { transform: translateX(-50%) rotate(-10deg); }
+            50% { transform: translateX(-50%) rotate(10deg); }
+        }
+
+        .message-box p {
+            color: #d4006d;
+            font-size: 1.3em;
+            line-height: 1.8;
+            text-align: center;
+            margin: 15px 0;
+        }
+
+        .heart-divider {
+            text-align: center;
+            font-size: 35px;
+            margin: 20px 0;
+            animation: heartbeat 1.5s ease-in-out infinite;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            25%, 75% { transform: scale(1.1); }
+            50% { transform: scale(1.2); }
+        }
+
+        /* Special wishes section */
+        .wishes {
+            background: linear-gradient(135deg, #ffb3d9, #ff99cc);
+            padding: 25px;
+            border-radius: 20px;
+            margin: 30px 0;
+            text-align: center;
+            color: white;
+            font-size: 1.2em;
+            box-shadow: 0 10px 30px rgba(255, 105, 180, 0.3);
+        }
+
+        /* Cute emoji decorations */
+        .emoji-rain {
+            position: fixed;
+            pointer-events: none;
+            z-index: 1000;
+        }
+
+        .falling-emoji {
+            position: fixed;
+            top: -50px;
+            font-size: 30px;
+            animation: fall linear;
+            pointer-events: none;
+        }
+
+        @keyframes fall {
+            to {
+                top: 100vh;
+                transform: translateX(100px) rotate(360deg);
+            }
+        }
+
+        /* Interactive button */
+        .surprise-btn {
+            background: linear-gradient(135deg, #ff1493, #ff69b4);
+            color: white;
+            border: none;
+            padding: 20px 40px;
+            font-size: 1.3em;
+            border-radius: 50px;
+            cursor: pointer;
+            display: block;
+            margin: 30px auto;
+            box-shadow: 0 10px 30px rgba(255, 20, 147, 0.4);
+            transition: all 0.3s;
+            font-weight: bold;
+            animation: btnPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes btnPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .surprise-btn:hover {
+            transform: scale(1.1) !important;
+            box-shadow: 0 15px 40px rgba(255, 20, 147, 0.6);
+        }
+
+        .surprise-btn:active {
+            transform: scale(0.95) !important;
+        }
+
+        /* Hidden surprise message */
+        .surprise-message {
+            background: linear-gradient(135deg, #ffd700, #ffed4e);
+            padding: 30px;
+            border-radius: 20px;
+            margin-top: 20px;
+            display: none;
+            animation: popIn 0.5s ease-out;
+            box-shadow: 0 15px 40px rgba(255, 215, 0, 0.5);
+        }
+
+        .surprise-message.show {
+            display: block;
+        }
+
+        @keyframes popIn {
+            from {
+                opacity: 0;
+                transform: scale(0.5) rotate(-5deg);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) rotate(0);
+            }
+        }
+
+        .surprise-message p {
+            font-size: 1.4em;
+            color: #d4006d;
+            text-align: center;
+            margin: 10px 0;
+        }
+
+        /* Signature */
+        .signature {
+            text-align: center;
+            margin-top: 40px;
+            font-size: 1.3em;
+            color: #ff1493;
+            font-style: italic;
+        }
+
+        /* Confetti effect */
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background: #ff69b4;
+            pointer-events: none;
+        }
+
+        /* Cute border decorations */
+        .corner-decoration {
+            position: absolute;
+            font-size: 30px;
+        }
+
+        .corner-top-left { top: 10px; left: 10px; }
+        .corner-top-right { top: 10px; right: 10px; }
+        .corner-bottom-left { bottom: 10px; left: 10px; }
+        .corner-bottom-right { bottom: 10px; right: 10px; }
+    </style>
+</head>
+<body>
+    <div class="emoji-rain" id="emojiRain"></div>
+    
+    <div class="card-container">
+        <div class="card">
+            <!-- Cute floating stickers -->
+            <div class="sticker sticker-1" onclick="playSound('🌸')">🌸</div>
+            <div class="sticker sticker-2" onclick="playSound('🦋')">🦋</div>
+            <div class="sticker sticker-3" onclick="playSound('⭐')">⭐</div>
+            <div class="sticker sticker-4" onclick="playSound('🎀')">🎀</div>
+            <div class="sticker sticker-5" onclick="playSound('💝')">💝</div>
+            <div class="sticker sticker-6" onclick="playSound('🌺')">🌺</div>
+
+            <!-- Corner decorations -->
+            <div class="corner-decoration corner-top-left">🌹</div>
+            <div class="corner-decoration corner-top-right">🌹</div>
+            <div class="corner-decoration corner-bottom-left">🌹</div>
+            <div class="corner-decoration corner-bottom-right">🌹</div>
+
+            <!-- Header -->
+            <div class="header">
+                <div>
+                    <span class="sparkle">✨</span>
+                    <span class="sparkle" style="animation-delay: 0.3s;">✨</span>
+                    <span class="sparkle" style="animation-delay: 0.6s;">✨</span>
+                </div>
+                <h1 class="main-title">Happy Rose Day!</h1>
+                <div class="name-tag">Anjalu 💖</div>
+            </div>
+
+            <!-- Interactive roses -->
+            <div class="rose-garden">
+                <div class="interactive-rose" onclick="clickRose(this)">🌹</div>
+                <div class="interactive-rose" onclick="clickRose(this)">🌹</div>
+                <div class="interactive-rose" onclick="clickRose(this)">🌹</div>
+                <div class="interactive-rose" onclick="clickRose(this)">🌹</div>
+                <div class="interactive-rose" onclick="clickRose(this)">🌹</div>
+            </div>
+            <div class="rose-counter" id="roseCounter">Click the roses! 🌹 Roses collected: <span id="count">0</span></div>
+
+            <div class="heart-divider">💕 💗 💕</div>
+
+            <!-- Message section -->
+            <div class="message-box">
+                <p>🌟 Hey Anjalu! 🌟</p>
+                <p>You're as beautiful and special as the prettiest rose in the garden! 🌹</p>
+                <p>Your smile brightens everyone's day, and your friendship is the sweetest gift! 🎁</p>
+                <p>May your life be filled with love, laughter, and endless happiness! 💖</p>
+            </div>
+
+            <div class="heart-divider">❤️ 🧡 💛 💚 💙 💜</div>
+
+            <!-- Special wishes -->
+            <div class="wishes">
+                <p>🌸 Wishing you a Rose Day as wonderful as you are! 🌸</p>
+                <p>✨ Stay amazing, stay awesome, stay YOU! ✨</p>
+            </div>
+
+            <!-- Surprise button -->
+            <button class="surprise-btn" onclick="showSurprise()">
+                Click for a Special Surprise! 🎁
+            </button>
+
+            <div class="surprise-message" id="surpriseMessage">
+                <p>🎉🎊 SURPRISE! 🎊🎉</p>
+                <p>You deserve all the roses in the world! 🌹🌹🌹</p>
+                <p>You're not just a friend, you're a BLESSING! 🙏💖</p>
+                <p>Keep shining bright like the star you are! ⭐✨</p>
+            </div>
+
+            <!-- Signature -->
+            <div class="signature">
+                With lots of love and warm wishes! 💝<br>
+                Happy Rose Day, Anjalu! 🌹
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let roseCount = 0;
+        let surpriseClicked = false;
+
+        // Click rose interaction
+        function clickRose(element) {
+            roseCount++;
+            document.getElementById('count').textContent = roseCount;
+            
+            // Create floating hearts
+            createFloatingHeart(element);
+            
+            // Change rose temporarily
+            const originalEmoji = element.textContent;
+            element.textContent = '💖';
+            setTimeout(() => {
+                element.textContent = originalEmoji;
+            }, 300);
+
+            // Special message at milestones
+            if (roseCount === 5) {
+                createEmojiRain(['🌹', '💕', '✨', '🌸'], 30);
+            }
+            if (roseCount === 10) {
+                alert('🎉 Wow! You collected 10 roses! You\'re amazing, Anjalu! 💖');
+            }
+        }
+
+        // Create floating hearts
+        function createFloatingHeart(element) {
+            const heart = document.createElement('div');
+            heart.textContent = '💖';
+            heart.style.position = 'fixed';
+            heart.style.fontSize = '30px';
+            heart.style.pointerEvents = 'none';
+            heart.style.zIndex = '1000';
+            
+            const rect = element.getBoundingClientRect();
+            heart.style.left = rect.left + 'px';
+            heart.style.top = rect.top + 'px';
+            
+            document.body.appendChild(heart);
+            
+            let yPos = rect.top;
+            let opacity = 1;
+            
+            const float = setInterval(() => {
+                yPos -= 3;
+                opacity -= 0.02;
+                heart.style.top = yPos + 'px';
+                heart.style.opacity = opacity;
+                
+                if (opacity <= 0) {
+                    clearInterval(float);
+                    heart.remove();
+                }
+            }, 20);
+        }
+
+        // Show surprise
+        function showSurprise() {
+            const surpriseMsg = document.getElementById('surpriseMessage');
+            surpriseMsg.classList.add('show');
+            
+            if (!surpriseClicked) {
+                surpriseClicked = true;
+                createConfetti();
+                createEmojiRain(['🎉', '🎊', '💖', '🌹', '✨', '🎁'], 50);
+            }
+        }
+
+        // Play sound effect (visual feedback)
+        function playSound(emoji) {
+            const sticker = document.createElement('div');
+            sticker.textContent = emoji;
+            sticker.style.position = 'fixed';
+            sticker.style.fontSize = '50px';
+            sticker.style.left = Math.random() * window.innerWidth + 'px';
+            sticker.style.top = '0px';
+            sticker.style.pointerEvents = 'none';
+            sticker.style.zIndex = '1000';
+            
+            document.body.appendChild(sticker);
+            
+            let pos = 0;
+            const fall = setInterval(() => {
+                pos += 5;
+                sticker.style.top = pos + 'px';
+                sticker.style.transform = `rotate(${pos}deg)`;
+                
+                if (pos > window.innerHeight) {
+                    clearInterval(fall);
+                    sticker.remove();
+                }
+            }, 20);
+        }
+
+        // Create emoji rain
+        function createEmojiRain(emojis, count) {
+            for (let i = 0; i < count; i++) {
+                setTimeout(() => {
+                    const emoji = document.createElement('div');
+                    emoji.className = 'falling-emoji';
+                    emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+                    emoji.style.left = Math.random() * window.innerWidth + 'px';
+                    emoji.style.animationDuration = (Math.random() * 3 + 2) + 's';
+                    
+                    document.body.appendChild(emoji);
+                    
+                    setTimeout(() => emoji.remove(), 5000);
+                }, i * 100);
+            }
+        }
+
+        // Create confetti
+        function createConfetti() {
+            const colors = ['#ff69b4', '#ff1493', '#ffd700', '#ff6347', '#00ff00', '#00bfff'];
+            
+            for (let i = 0; i < 100; i++) {
+                setTimeout(() => {
+                    const confetti = document.createElement('div');
+                    confetti.className = 'confetti';
+                    confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                    confetti.style.left = Math.random() * window.innerWidth + 'px';
+                    confetti.style.top = '-10px';
+                    confetti.style.position = 'fixed';
+                    
+                    document.body.appendChild(confetti);
+                    
+                    let yPos = -10;
+                    let xPos = parseFloat(confetti.style.left);
+                    let xVel = (Math.random() - 0.5) * 5;
+                    let yVel = Math.random() * 5 + 2;
+                    
+                    const animate = setInterval(() => {
+                        yPos += yVel;
+                        xPos += xVel;
+                        yVel += 0.1;
+                        
+                        confetti.style.top = yPos + 'px';
+                        confetti.style.left = xPos + 'px';
+                        confetti.style.transform = `rotate(${yPos * 2}deg)`;
+                        
+                        if (yPos > window.innerHeight) {
+                            clearInterval(animate);
+                            confetti.remove();
+                        }
+                    }, 20);
+                }, i * 30);
+            }
+        }
+
+        // Initial emoji rain on load
+        window.onload = function() {
+            setTimeout(() => {
+                createEmojiRain(['🌹', '💖', '✨'], 20);
+            }, 500);
+        };
+    </script>
+</body>
+</html>
